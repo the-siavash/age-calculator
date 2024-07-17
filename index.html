@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <header>
+      <h1>Age Calculator</h1>
+    </header>
+
+    <main>
+
+      <div class="input-group">
+        <input
+          type="date"
+          name="birth-date"
+          id="birth-date"
+          class="birth-date-picker"
+        />
+        <button id="submit" class="btn btn--primary">calculate!</button>
+      </div>
+
+      <div class="data-wrapper">
+        <p id="birthdate" class="center-inline clr-800"></p>
+      </div>
+
+      <div class="data-wrapper">
+        <div class="age">
+          <p><span id="year" class="clr-800">0</span> Year</p>
+          <p><span id="month" class="clr-800">0</span> Month</p>
+          <p><span id="day" class="clr-800">0</span> Day</p>
+        </div>
+      </div>
+
+      <div class="data-wrapper">
+        <div class="date">
+          <p><span id="years" class="clr-800">0</span> Years</p>
+          <p><span id="months" class="clr-800">0</span> Months</p>
+          <p><span id="weeks" class="clr-800">0</span> Weeks</p>
+          <p><span id="days" class="clr-800">0</span> Days</p>
+        </div>
+
+        <div class="time">
+          <p><span id="hour" class="clr-800">0</span> Hours</p>
+          <p><span id="minute" class="clr-800">0</span> Minutes</p>
+          <p><span id="second" class="clr-800">0</span> Seconds</p>
+        </div>
+      </div>
+
+      <div class="data-wrapper">
+        <p id="birthday-counter" class="center-inline">
+          Days to your next birthday: <span class="clr-800">0</span>
+        </p>
+      </div>
+
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
