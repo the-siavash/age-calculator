@@ -20,14 +20,26 @@
 
     <main>
 
-      <div class="input-group">
-        <input
-          type="date"
-          name="birth-date"
-          id="birth-date"
-          class="birth-date-picker"
-        />
-        <button id="submit" class="btn btn--primary">calculate!</button>
+      <div class="date-picker">
+        <div class="input-group">
+          <select name="day" id="day-picker"></select>
+          <select name="month" id="month-picker">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+          </select>
+          <select name="year" id="year-picker"></select>
+        </div>
+        <button id="submit" type="submit" class="btn btn--primary">calculate!</button>
       </div>
 
       <div class="data-wrapper">

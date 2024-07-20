@@ -1,6 +1,73 @@
-const dateControl = document.getElementById('birth-date');
-dateControl.max = new Date().toISOString().split('T').at(0);
+// get day/month/year from selects
+const selectedDay = document.getElementById('day-picker');
+const selectedMonth = document.getElementById('month-picker');
+const selectedYear = document.getElementById('year-picker');
+let selectedDayValue;
 
+document.addEventListener('DOMContentLoaded', () => {
+  populateYears();
+  populateDays();
+});
+
+selectedYear.addEventListener('change', () => {
+  clearDayOptions();
+  populateDays(selectedDayValue);
+});
+
+selectedMonth.addEventListener('change', () => {
+  clearDayOptions();
+  populateDays(selectedDayValue);
+});
+
+selectedDay.addEventListener('change', (event) => {
+  selectedDayValue = event.target.value;
+});
+
+// populate years in DOM
+function populateYears(from = 1900) {
+  for (let year = from; year <= new Date().getFullYear(); year++) {
+    const opt = document.createElement('option');
+    opt.value = year;
+    opt.textContent = year;
+    opt.selected = year;
+    selectedYear.appendChild(opt);
+  }
+}
+
+// populate days in DOM
+function populateDays(defaultDay) {
+  const isLeapYear = new Date(selectedYear.value, 1, 29).getDate() === 29;
+  const months = {
+    January: 31,
+    February: isLeapYear ? 29 : 28,
+    March: 31,
+    April: 30,
+    May: 31,
+    June: 30,
+    July: 31,
+    August: 31,
+    September: 30,
+    October: 31,
+    November: 30,
+    December: 31,
+  };
+
+  const month = selectedMonth.options[selectedMonth.value].text;
+  for (let day = 1; day <= months[month]; day++) {
+    const opt = document.createElement('option');
+    opt.value = day;
+    opt.textContent = day;
+    if (parseInt(defaultDay) === day) opt.selected = true;
+    selectedDay.appendChild(opt);
+  }
+}
+
+// clear day options in DOM
+function clearDayOptions() {
+  [...selectedDay.options].forEach((option) => option.remove());
+}
+
+// app
 const submit = document.querySelector('#submit');
 const dataContainers = document.querySelectorAll('.data-wrapper');
 const dateYear = document.getElementById('year');
@@ -20,16 +87,20 @@ const data = {};
 let birthDate;
 
 submit.addEventListener('click', () => {
-  if (dateControl.value) {
-    dataContainers.forEach(
-      (dataContainer) => (dataContainer.style.display = 'grid')
-    );
-  }
+  dataContainers.forEach(
+    (dataContainer) => (dataContainer.style.display = 'grid')
+  );
 
-  birthDate = new Date(dateControl.value);
-  birthDate.setHours(0);
-  birthDate.setMinutes(0);
-  birthDate.setSeconds(0);
+  birthDate = new Date(
+    selectedYear.value,
+    selectedMonth.value,
+    selectedDay.value,
+    0,
+    0,
+    0
+  );
+
+  console.log(birthDate);
 
   app();
 
@@ -138,7 +209,7 @@ function findDayName(day) {
     'Thursday',
     'Friday',
     'Saturday',
-    'Sunday'
+    'Sunday',
   ];
   return days[day - 1];
 }
