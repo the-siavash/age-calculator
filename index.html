@@ -39,6 +39,9 @@
           </select>
           <select name="year" id="year-picker"></select>
         </div>
+        <div class="input-group">
+          <input id="time-picker" class="time-picker" type="time" value="00:00">
+        </div>
         <button id="submit" type="submit" class="btn btn--primary">calculate!</button>
       </div>
 
@@ -47,11 +50,21 @@
       </div>
 
       <div class="data-wrapper">
-        <div class="age">
+        <div class="grid col-3">
           <p><span id="year" class="clr-800">0</span> Year</p>
           <p><span id="month" class="clr-800">0</span> Month</p>
           <p><span id="day" class="clr-800">0</span> Day</p>
         </div>
+        <div class="grid col-3">
+          <p><span id="hour" class="clr-800">0</span> Hour</p>
+          <p><span id="minute" class="clr-800">0</span> Minute</p>
+          <p><span id="second" class="clr-800">0</span> Second</p>
+        </div>
+        <!-- <div class="age-time">
+          <span id="hour" class="clr-800">0</span> :
+          <span id="minute" class="clr-800">0</span> :
+          <span id="second" class="clr-800">0</span>
+        </div> -->
       </div>
 
       <div class="data-wrapper">
@@ -63,9 +76,9 @@
         </div>
 
         <div class="time">
-          <p><span id="hour" class="clr-800">0</span> Hours</p>
-          <p><span id="minute" class="clr-800">0</span> Minutes</p>
-          <p><span id="second" class="clr-800">0</span> Seconds</p>
+          <p><span id="hours" class="clr-800">0</span> Hours</p>
+          <p><span id="minutes" class="clr-800">0</span> Minutes</p>
+          <p><span id="seconds" class="clr-800">0</span> Seconds</p>
         </div>
       </div>
 

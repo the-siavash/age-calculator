@@ -96,6 +96,19 @@ body {
   color: var(--clr-neutral-800);
 }
 
+.grid {
+  display: grid;
+  justify-items: center;
+}
+
+.col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 /* components */
 
 .btn {
@@ -155,6 +168,18 @@ select#year-picker {
   text-align: center;
 }
 
+.time-picker {
+  outline: 0;
+  border: 0;
+  background-color: inherit;
+  border: 1px dashed var(--clr-neutral-400);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+  text-align: center;
+}
+
 .data-wrapper {
   margin-top: 1rem;
   border: 1px dashed var(--clr-neutral-400);
@@ -166,16 +191,16 @@ select#year-picker {
   display: none;
 }
 
-.age {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
-}
-
 .date p,
 .time p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   margin-bottom: .2rem;
+}
+
+.age-time {
+  display: flex;
+  justify-content: center;
+  column-gap: 0.2rem;
 }

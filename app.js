@@ -67,19 +67,32 @@ function clearDayOptions() {
   [...selectedDay.options].forEach((option) => option.remove());
 }
 
+// get hour:minute from time-input
+const birthTime = document.getElementById('time-picker');
+let birthTimeHour = 0;
+let birthTimeMinute = 0;
+
+birthTime.addEventListener('change', () => {
+  birthTimeHour = birthTime.value.split(':').at(0);
+  birthTimeMinute = birthTime.value.split(':').at(1);
+});
+
 // app
 const submit = document.querySelector('#submit');
 const dataContainers = document.querySelectorAll('.data-wrapper');
 const dateYear = document.getElementById('year');
 const dateMonth = document.getElementById('month');
 const dateDay = document.getElementById('day');
+const dateHour = document.getElementById('hour');
+const dateMinute = document.getElementById('minute');
+const dateSecond = document.getElementById('second');
 const dateYears = document.getElementById('years');
 const dateMonths = document.getElementById('months');
 const dateWeeks = document.getElementById('weeks');
 const dateDays = document.getElementById('days');
-const timeHour = document.getElementById('hour');
-const timeMinute = document.getElementById('minute');
-const timeSecond = document.getElementById('second');
+const timeHour = document.getElementById('hours');
+const timeMinute = document.getElementById('minutes');
+const timeSecond = document.getElementById('seconds');
 const nextBirthDay = document.getElementById('birthday-counter');
 const birthDateContainer = document.getElementById('birthdate');
 
@@ -95,12 +108,10 @@ submit.addEventListener('click', () => {
     selectedYear.value,
     selectedMonth.value,
     selectedDay.value,
-    0,
-    0,
+    birthTimeHour,
+    birthTimeMinute,
     0
   );
-
-  console.log(birthDate);
 
   app();
 
@@ -220,13 +231,26 @@ function app() {
     birthDate.getDay()
   )}, ${birthDate.getDate()} ${findMonthName(
     birthDate.getMonth()
-  )} ${birthDate.getFullYear()}`;
+  )} ${birthDate.getFullYear()}, 
+  ${birthDate
+    .getHours()
+    .toString()
+    .padStart(2, 0)
+  }:${birthDate
+    .getMinutes()
+    .toString()
+    .padStart(2, 0)
+  }`;
 
   // calculate age and update DOM
   calculateAge(birthDate);
   dateYear.textContent = data.year;
   dateMonth.textContent = data.month;
   dateDay.textContent = data.day;
+  const now = new Date();
+  dateHour.textContent = now.getHours();
+  dateMinute.textContent = now.getMinutes();
+  dateSecond.textContent = now.getSeconds();
 
   // calculate Date and update DOM
   calculateDateFromBirthDate(birthDate);
